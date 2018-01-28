@@ -1,0 +1,14 @@
+/*** Portal background styles ***/
+.main-content {
+  background-image: none;
+}
+
+
+
+
+/*** @Media styles ***/
+@media screen and (min-width: 768px) {
+  .main-content {
+    background: url("../Assets/Images/Background-L.jpeg") center/cover;
+  }
+}

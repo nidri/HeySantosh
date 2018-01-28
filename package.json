@@ -1,0 +1,16 @@
+{
+  "name": "heysantosh",
+  "version": "1.0.0",
+  "description": "Assistant for Santosh",
+  "main": "Server.js",
+  "scripts": {
+    "test": "console.log(\\\"Hey Santosh running\\\");",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "\"Hey",
+    "Santosh\""
+  ],
+  "author": "Krishna Santosh Nidri",
+  "license": "ISC"
+}
