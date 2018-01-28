@@ -5,19 +5,24 @@ var url = require('url');
 
 function HandleCSSAndJSRequest(Request, Response) {
   // Handle CSS requests
-  if(!Request.url.toLowerCase().endsWith("css") && !Request.url.toLowerCase().endsWith("js")) return Response.end();
-  console.log("Processing - " + Request.url);
-  fs.readFile(Request.url, function(Err, Stream) {
-    if(!Err) {
-      var ContentType = "";
-      if(Request.url.toLowerCase().endsWith("css")) ContentType = "text/css";
-      else ContentType = "application/javascript";
-      Response.statusCode = "200";
-      Response.setHeader("Content-Type", ContentType);
-      Response.write(Stream);
-      Response.end();
-    }
+  if(!Request.url.toLowerCase().endsWith("css") && !Request.url.toLowerCase().endsWith("js")) {
+    console.log("Not processing - " + Request.url);
+    return Response.end();
+  }
+  else {
+    console.log("Processing - " + Request.url);
+    fs.readFile("." + Request.url, function(Err, Stream) {
+      if(!Err) {
+        var ContentType = "";
+        if(Request.url.toLowerCase().endsWith("css")) ContentType = "text/css";
+        else ContentType = "application/javascript";
+        Response.statusCode = "200";
+        Response.setHeader("Content-Type", ContentType);
+        Response.write(Stream);
+        Response.end();
+      }
   });
+  }
 }
 function HandleIncomingRequest(Request, Response) {
   return new Promise(function(resolve, reject) {

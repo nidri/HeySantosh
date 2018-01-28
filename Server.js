@@ -14,7 +14,10 @@ var httpServer = http.createServer(function(req, res) {
   console.log("HTTP request for - " + req.url);
   ServerScripts.HandleIncomingRequest(req, res)
   .then(function(Response) {
-    console.log("Completed request");
+    console.log("Completed request - " + req.url);
+  })
+  .catch(function(Error) {
+    console.log("Error occured while processing - " + req.url + " - " + Error);
   });
 });
 
